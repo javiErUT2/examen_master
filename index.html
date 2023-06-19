@@ -3,9 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"type="text/css" href="style.css">
     <title>Header</title>
 </head>
 <body>
     
+    <div class="carousel-container">
+        <img src="https://www.libelularoja.com/wp-content/uploads/explicacion-resolucion-imagen.jpg" alt="Imagen 1" class="carousel-image">
+        <img src="https://www.damos.co/fotosnoticias/mac_tamano_de_las_imagenes_en_redes_sociales_en_2020_1593971816.jpg" alt="Imagen 2" class="carousel-image">
+        <img src="https://imgcap.capturetheatlas.com/wp-content/uploads/2020/04/Full-frame-sensor-night-photography.jpg" alt="Imagen 3" class="carousel-image">
+        <button id="prev-button" class="carousel-button carousel-button-previous">Anterior</button>
+        <button id="next-button" class="carousel-button carousel-button-next">Siguiente</button>
+    </div>
+    <script>
+        const carouselImages = document.querySelectorAll('.carousel-image');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            carouselImages.forEach((image, i) => {
+                if (i === index) {
+                    image.style.display = 'block';
+                } else {
+                    image.style.display = 'none';
+                }
+            });
+        }
+
+        function prevImage() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = carouselImages.length - 1;
+            }
+            showImage(currentIndex);
+        }
+
+        function nextImage() {
+            currentIndex++;
+            if (currentIndex >= carouselImages.length) {
+                currentIndex = 0;
+            }
+            showImage(currentIndex);
+        }
+
+        prevButton.addEventListener('click', prevImage);
+        nextButton.addEventListener('click', nextImage);
+
+        showImage(currentIndex);
+    </script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 100px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0px;
+            border-radius: 10px;
+            background-color: #555;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #777;
+        }
+
+        .carousel-container {
+            width: 800px;
+            height: 500px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #333;
+            color: #fff;
+            font-size: 18px;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: #555;
+        }
+
+        .carousel-button-previous {
+            left: 10px;
+        }
+
+        .carousel-button-next {
+            right: 10px;
+        }
+    </style>
+      
+    </style>
 </body>
 </html>
